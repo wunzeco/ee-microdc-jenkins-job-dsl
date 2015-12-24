@@ -27,11 +27,11 @@ job("_dsl-seed") {
     steps {
         //gradle 'clean test'
         dsl {
-            external('jenkins-job-dsl/jobs/**/*Jobs.groovy')
+            external('jobs/**/*Jobs.groovy')
             additionalClasspath('src/main/groovy')
         }
         dsl { 
-            external("jenkins-job-dsl/**/*Pipeline.groovy")
+            external("**/*Pipeline.groovy")
         }
     }
     //publishers {
