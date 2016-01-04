@@ -22,12 +22,13 @@ job(svc) {
         archiveJunit '**/test-results/*.xml'
         archiveArtifacts {
             pattern("**/${svc}/build/libs/*.jar")
-            pattern('**/${svc}/build/docker/Dockerfile')
+            pattern("**/${svc}/build/docker/Dockerfile")
             onlyIfSuccessful()
         }
     }
 }
 
+/*
 job("${svc}-image-build") {
     steps {
         //copy artifact from $svc
@@ -46,3 +47,4 @@ job("${svc}-image-build") {
         //run container
     }
 }
+*/
