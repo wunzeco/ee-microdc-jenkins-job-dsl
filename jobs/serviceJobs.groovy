@@ -28,7 +28,6 @@ job(svc) {
     }
 }
 
-/*
 job("${svc}-image-build") {
     steps {
         //copy artifact from $svc
@@ -47,4 +46,3 @@ job("${svc}-image-build") {
         //run container
     }
 }
-*/
