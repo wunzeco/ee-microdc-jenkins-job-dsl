@@ -16,12 +16,12 @@ job(svc) {
     }
     steps {
         shell("./gradlew clean build createDockerfile distTarGz")
-        shell("Now upload application artifact (${svc}-${BUILD_NUMBER}.tar.gz) to Nexus/S3")
+        shell("echo 'Now upload application artifact (${svc}-${BUILD_NUMBER}.tar.gz) to Nexus/S3'")
     }
     publishers {
         archiveJunit '**/test-results/*.xml'
         archiveArtifacts {
-            pattern('**/build/lib/"${svc}*.jar')
+            pattern("**/build/lib/${svc}*.jar")
             pattern('**/build/docker/Dockerfile')
             onlyIfSuccessful()
         }
