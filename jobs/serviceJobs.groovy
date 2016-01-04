@@ -21,7 +21,7 @@ job(svc) {
     publishers {
         archiveJunit '**/test-results/*.xml'
         archiveArtifacts {
-            pattern("**/build/lib/${svc}*.jar")
+            pattern("**/build/libs/${svc}*.jar")
             pattern('**/build/docker/Dockerfile')
             onlyIfSuccessful()
         }
