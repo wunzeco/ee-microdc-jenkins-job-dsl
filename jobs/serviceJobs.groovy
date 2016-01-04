@@ -21,7 +21,7 @@ job(svc) {
     publishers {
         archiveJunit '**/test-results/*.xml'
         archiveArtifacts {
-            pattern("**/build/libs/${svc}*.jar")
+            pattern("**/build/libs/*.jar")
             pattern('**/build/docker/Dockerfile')
             onlyIfSuccessful()
         }
@@ -35,16 +35,15 @@ job("${svc}-image-build") {
         copyArtifacts(svc) {
             includePatterns('*.jar', 'Dockerfile')
             //excludePatterns('test.xml', 'test.properties')
-            targetDirectory('files')
+            //targetDirectory('files')
             flatten()
             optional()
             buildSelector {
                 latestSuccessful(true)
             }
         }
-        //decompress artifact
         // build image
-        // I need Dockerfile, jar and docker-compose.yml
+        shell("docker build -t ee/$svc .")
         //run container
     }
 }
