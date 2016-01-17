@@ -29,6 +29,8 @@ job(svc) {
 }
 
 /*
+RETHINK - JENKINS is a docker container
+
 job("${svc}-image-build") {
     steps {
         //copy artifact from $svc

@@ -24,7 +24,13 @@ job("_dsl-seed") {
     triggers {
         scm 'H/2 * * * *'
     }
+    wrappers {
+        credentialsBinding {
+            usernamePassword('STASH_LOGIN', 'stash-creds-id')
+        }
+    }
     steps {
+        shell('echo \$STASH_LOGIN')
         //gradle 'clean test'
         dsl {
             external('jobs/**/*Jobs.groovy')
